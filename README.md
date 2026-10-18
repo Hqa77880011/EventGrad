@@ -63,3 +63,16 @@ python -m eventgrad.statistics --records runs/main/eventgrad/records.jsonl --out
 ```
 
 Supply --reference with a matched record file for paired differences. Resampling uses independent case IDs, or explicit cluster IDs when provided. Repeated observations from one source unit must share cluster. Zero-event bounds refer to an event in an independent cluster.
+
+## Registered compact reproduction setting
+
+Twenty independent categorical streams with eight features, three classes and a fixed rank-six parameter subspace. Event-time records reconstruct the exact projected gradient; rotation transport is unnecessary for this fixed-subspace setting.
+
+Run from the repository root after installation. The following commands use the registered setting; they are provided for execution and have not been run as part of the source review.
+
+```bash
+python -m eventgrad prepare --config configs/reproduce.json --output data/reproduce.jsonl
+python -m eventgrad suite --data data/reproduce.jsonl --output runs/reproduce
+```
+
+This setting needs no external dataset or pretrained weights. Generated inputs and declared fault/shift laws define the finite task; reported quantities retain that provenance.
